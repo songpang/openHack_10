@@ -25,7 +25,6 @@ router.post('/dataSave', function(req, res) {
 router.post('/initial', function (req, res) {
 
     var user_id = req.body.id;
-    console.log(user_id);
     var sql = 'SELECT schedule_id as "id", gr_name as "calendarId", title, category, start_date as "start", end_date as "end" FROM schedule WHERE user_id = ' + "'" + user_id + "'" + ';';
 
     db.query(sql, (err, rows) => {
@@ -38,4 +37,26 @@ router.post('/initial', function (req, res) {
 
 })
 
+router.post('/update', function (req, res) {
+
+    const {calendarId, id, title, start, end} = req.body;
+
+    var sql = 'UPDATE schedule SET gr_name = ?, title = ?, start_date = ?, end_date = ? WHERE schedule_id = ?;';
+    var params = [calendarId, title, start, end, id];
+
+    db.query(sql, params, (err, rows, fields) =>
+    {
+        if(err) throw err;
+        else
+        {
+            res.send();
+        }
+    })
+})
+
+router.post('/delete', function (req, res) {
+
+
+
+})
 module.exports = router;

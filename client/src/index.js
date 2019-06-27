@@ -151,7 +151,24 @@ calendar.on('beforeCreateSchedule', scheduleData => {
 calendar.on('beforeUpdateSchedule', scheduleData => {
   const {schedule} = scheduleData;
 
-  calendar.updateSchedule(schedule.id, schedule.calendarId, schedule);
+  const tempDate = schedule.start;
+  const tempDate2 = schedule.end;
+
+  $.ajax({
+    url: '/update', // 클라이언트가 요청을 보낼 서버의 URL 주소
+    data: {
+      calendarId: schedule.calendarId,
+      id: schedule.id,
+      title: schedule.title,
+      start: `${tempDate.getFullYear()}-${tempDate.getMonth() + 1}-${tempDate.getDate()} ${tempDate.getHours()}:${tempDate.getMinutes()}:${tempDate.getSeconds()}`,
+      end: `${tempDate2.getFullYear()}-${tempDate2.getMonth() + 1}-${tempDate2.getDate()} ${tempDate2.getHours()}:${tempDate2.getMinutes()}:${tempDate2.getSeconds()}`
+    },
+    type: 'POST', // HTTP 요청 방식(GET, POST)
+    dataType: 'json', // 서버에서 보내줄 데이터의 타입
+    success() {
+      calendar.updateSchedule(schedule.id, schedule.calendarId, schedule);
+    }
+  });
 });
 
 // 일정 삭제
