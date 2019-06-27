@@ -59,8 +59,10 @@ const calendar = new Calendar("#calendar", {
 
 const App = {
   plusFun: function() {
+    let groupname = $('#groupname').val();
+    console.log(groupname);
     const plusUl = document.createElement("li");
-    plusUl.innerHTML = '<a><i class="nc-icon nc-bank"></i><p>Dashboard</p></a>';
+    plusUl.innerHTML = '<a style="display: flex; justify-content: space-between;"><p>'+groupname+'</p><img src = "../assets/img/자산 7.png"/></a>';
     document.getElementById("a").appendChild(plusUl);
   },
   changeMonth: function() {
@@ -106,6 +108,7 @@ calendar.createSchedules([
     id: "2",
     calendarId: "General Lecture",
     title: "건강과 영양",
+    location: '구리시',
     category: "time",
     dueDateClass: "",
     start: "2019-06-24T14:30:00",
@@ -141,7 +144,8 @@ calendar.on("beforeCreateSchedule", scheduleData => {
   };
 
   calendar.createSchedules([schedule]);
-
+  console.log(scheduleData.title, scheduleData.location);
+  
   alert("일정 생성 완료");
 });
 
