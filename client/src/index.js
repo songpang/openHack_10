@@ -3,6 +3,8 @@ import 'tui-calendar/dist/tui-calendar.css';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
+let index = 0;
+
 const calendar = new Calendar('#calendar', {
   defaultView: 'month',
   useCreationPopup: true,
@@ -42,11 +44,13 @@ const calendar = new Calendar('#calendar', {
 const App = {
   plusFun() {
     const groupname = $('#groupname').val();
+    let vcolor = `#${Math.round(Math.random() * 0xFFFFFF).toString(16)}`;
 
     $.ajax({
       url: '/dataSave', // 클라이언트가 요청을 보낼 서버의 URL 주소
       data: {id: 'jen',
-        groupName: groupname}, // HTTP 요청과 함께 서버로 보낼 데이터
+        groupName: groupname,
+        color: vcolor}, // HTTP 요청과 함께 서버로 보낼 데이터
       type: 'POST', // HTTP 요청 방식(GET, POST)
       dataType: 'json' // 서버에서 보내줄 데이터의 타입
     });
@@ -94,20 +98,20 @@ $.ajax({
   success(json) {
     let tables = [];
 
-    for (let i = 0; i < json.length; i = i + 1) {
+    for (index = 0; index < json.length; index = index + 1) {
       tables.push({
-        id: i + 1,
-        name: json[i].gr_name,
+        id: String(json[index].gr_number),
+        name: json[index].gr_name,
         color: '#ffffff',
-        bgColor: '#9e5fff',
-        dragBgColor: '#9e5fff',
-        borderColor: '#9e5fff'
+        bgColor: json[index].color,
+        dragBgColor: json[index].color,
+        borderColor: json[index].color
       });
     }
 
     calendar.setCalendars(tables);
   }
-})
+});
 
 $.ajax({
   url: '/initial', // 클라이언트가 요청을 보낼 서버의 URL 주소
@@ -117,12 +121,12 @@ $.ajax({
   success(json) {
     calendar.createSchedules(json);
   }
-})
+});
 
 // 일정 생성
 calendar.on('beforeCreateSchedule', scheduleData => {
   const schedule = {
-    calendarId: 'Major Lecture',
+    calendarId: scheduleData.calendarId,
     id: String(Math.random() * 100000000000000000),
     title: scheduleData.title,
     isAllDay: scheduleData.isAllDay,
@@ -137,7 +141,7 @@ calendar.on('beforeCreateSchedule', scheduleData => {
   $.ajax({
     url: '/insert',
     data: {
-      calendarId: 'Major Lecture',
+      calendarId: scheduleData.calendarId,
       id: String(Math.random() * 100000000000000000),
       title: scheduleData.title,
       isAllDay: scheduleData.isAllDay,

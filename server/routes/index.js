@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function (req, res, next) {
 
-    var sql = "SELECT gr_name FROM user_group WHERE id = ?;";
+    var sql = "SELECT gr_name, color, gr_number FROM user_group WHERE id = ?;";
     var params = [req.body.id];
 
     db.query(sql, params,(err, rows) => {
@@ -25,8 +25,8 @@ router.post('/', function (req, res, next) {
 
 router.post('/dataSave', function(req, res) {
 
-    var sql = "INSERT INTO user_group VALUES(?, ?)";
-    var params = [req.body.id, req.body.groupName];
+    var sql = "INSERT INTO user_group(id, gr_name, color) VALUES(?, ?, ?)";
+    var params = [req.body.id, req.body.groupName, req.body.color];
     db.query(sql, params, (err, rows) => {
     if(err) throw err;
   });
@@ -35,7 +35,7 @@ router.post('/dataSave', function(req, res) {
 router.post('/initial', function (req, res) {
 
     var user_id = req.body.id;
-    var sql = 'SELECT schedule_id as "id", gr_name as "calendarId", title, category, start_date as "start", end_date as "end" FROM schedule WHERE user_id = ' + "'" + user_id + "'" + ';';
+    var sql = 'SELECT schedule_id as "id", gr_number as "calendarId", title, category, start_date as "start", end_date as "end" FROM schedule WHERE user_id = ' + "'" + user_id + "'" + ';';
 
     db.query(sql, (err, rows) => {
         if(err) throw err;
@@ -85,7 +85,7 @@ router.post('/insert', function(req, res){
 
     const{calendarId, id, title, isAllDay, start, end, category} = req.body;
 
-    var sql = 'INSERT INTO schedule(title, user_id, start_date, gr_name, end_date, category) VALUES(?, ?, ?, ? ,? ,?);';
+    var sql = 'INSERT INTO schedule(title, user_id, start_date, gr_number, end_date, category) VALUES(?, ?, ?, ? ,? ,?);';
     var params = [title, 'jen', start, calendarId, end, category];
 
     db.query(sql, params, (err, rows, fields) => {
