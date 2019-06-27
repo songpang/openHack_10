@@ -102,51 +102,38 @@
       .inp input:focus + span + .border {
         transform: scaleX(1);
       }
+
+      psidebar {
+        font-size:15px;
+      }
       /* Input css */
     </style>
   </head>
 
   <body class="">
+
     <div class="wrapper ">
       <div class="sidebar" data-color="white" data-active-color="danger">
-        <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
-        <div class="logo">
-          <h1>KLAYTN</h1>
+        <div class="logo" style = "text-align: center;">
+          <h2>링크캘린더</h2>
         </div>
-        <div class="logo">
-          <a href="#" class="simple-text logo-mini">
-            <div class="logo-image-small">
-              <img src="../assets/img/logo-small.png" />
+        <div class="logo" style="display: flex">
+          <a>
+            <div>
+              <img src="../assets/img/logo-small.png" style="width: 60px; height: 60px"/>
             </div>
           </a>
           <a href="#" class="simple-text logo-normal">
-            KLEANDER
-            <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
-          </div> -->
+              &nbsp;&nbsp;&nbsp;&nbsp;hacker10
           </a>
         </div>
         <div class="sidebar-wrapper">
           <ul id="a" class="nav">
-            <li class="active ">
-              <a href="./dashboard.html" style="display: flex; justify-content: space-between;">
-                <p>Dashboard</p>
+            <li>
+              <a href="./dashboard.html" style="display: flex; justify-content: space-between;" >
+                <p style="font-size: 18px;">모든공유일정</p>
                 <img src = "../assets/img/자산 7.png"/>
               </a>
-            </li>
-            <li class="active">
-                <a href="./dashboard.html" style="display: flex; justify-content: space-between;">
-                  <p>Dashboard</p>
-                  <img src = "../assets/img/자산 7.png"/>
-                </a>
-            </li>
-            <li>
-                <a href="./dashboard.html" style="display: flex; justify-content: space-between;">
-                  <p>Dashboard</p>
-                  <img src = "../assets/img/자산 7.png"/>
-                </a>
             </li>
             <li>
                 <a href="#" style="display: flex; justify-content: space-between;">
@@ -212,6 +199,7 @@
         <!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
+
       <!-- adding sharing modal start -->
       <div class="modal fade" tabindex="-1" role="dialog" id="shareModal">
         <div class="modal-dialog modal-sm">
@@ -244,127 +232,44 @@
       <!-- /.modal -->
 
       <div class="main-panel">
-        <!-- Navbar -->
-        <nav
-          class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent"
-        >
-          <div class="container-fluid">
-            <div class="navbar-wrapper">
-              <div class="navbar-toggle">
-                <button type="button" class="navbar-toggler">
-                  <span class="navbar-toggler-bar bar1"></span>
-                  <span class="navbar-toggler-bar bar2"></span>
-                  <span class="navbar-toggler-bar bar3"></span>
-                </button>
-              </div>
-              <a class="navbar-brand">KLAY : 2</a>
-            </div>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navigation"
-              aria-controls="navigation-index"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-              <span class="navbar-toggler-bar navbar-kebab"></span>
-            </button>
-            <div
-              class="collapse navbar-collapse justify-content-end"
-              id="navigation"
-              style="margin-bottom:-15px;"
-            >
-              <form>
-                <div class="input-group no-border">
-                  <input
-                    type="text"
-                    value=""
-                    class="form-control"
-                    placeholder="Search Me !"
-                  />
-                  <div class="input-group-append">
-                    <div class="input-group-text">
-                      <i class="nc-icon nc-zoom-split"></i>
-                    </div>
-                  </div>
-                </div>
-              </form>
-              &nbsp;&nbsp;&nbsp;
-              <div id="sharelink">
-                <a href="#" class="simple-text logo-mini">
-                  <div style="display: inline-flex;">
-                    <div class="logo-image-small">
-                      <img
-                        src="../assets/img/logo-small.png "
-                        style="width: 40px; height: 40px"
-                      />
-                    </div>
-                    <div class="logo-image-small" style="margin-left: -10px;">
-                      <img
-                        src="../assets/img/logo-small.png"
-                        style="width: 40px; height: 40px;"
-                      />
-                    </div>
-                    <div class="logo-image-small" style="margin-left: -10px;">
-                      <img
-                        src="../assets/img/logo-small.png"
-                        style="width: 40px; height: 40px"
-                      />
-                    </div>
-                    <h3 style="color: #000000">...&nbsp;</h3>
-                  </div>
-                </a>
-                <button
-                  class="btn"
-                  data-toggle="modal"
-                  data-target="#shareModal"
-                >
-                  <i class="nc-icon nc-vector" style="font-size: 17px"></i>
-                  &nbsp;&nbsp; Share
-                </button>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <!-- End Navbar -->
+        
         <div class="content">
+            <div id = "setdate" style="text-align: center; margin-bottom: -20px;">
+              </div>
           <div style="display:flex; justify-content : space-between;">
             <div
               class="btn-toolbar"
               role="toolbar"
               aria-label="Toolbar with button groups"
             >
-              <div class="btn-group mr-2" role="group" style="height: 65px">
-                <button onclick="App.changeHide()" class="btn btn-secondary">
-                  Clear
+
+                <button onclick="App.clear()" class="btn btn-secondary">
+                  Today
                 </button>
-              </div>
-              <div class="btn-group mr-2" role="group" style="height: 65px">
+
+              <!-- <div class="btn-group mr-2" role="group" style="height: 65px">
                 <button onclick="App.changePrev()" class="btn btn-secondary">
                   <
                 </button>
                 <button onclick="App.changeNext()" class="btn btn-secondary">
                   >
                 </button>
-              </div>
+              </div> -->
             </div>
 
-            <div class="btn-group" role="group" style="height: 65px">
+            <div>
               <button onclick="App.changeMonth()" class="btn btn-secondary">
                 Monthly
               </button>
               <button onclick="App.changeWeek()" class="btn btn-secondary">
                 Weekly
               </button>
-              <button onclick="App.changeDay()" class="btn btn-secondary">
+              <button onclick="App.changeDay()" class="btn btn-secondary" style="font-si">
                 Daily
               </button>
             </div>
           </div>
-          <div id="calendar" style="height: 760px;"></div>
+          <div id="calendar" style="height: 700px;"></div>
         </div>
       </div>
     </div>
