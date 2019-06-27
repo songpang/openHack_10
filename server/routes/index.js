@@ -13,6 +13,16 @@ router.get('/', function(req, res, next) {
 
 });
 
+router.post('/', function (req, res, next) {
+
+    var sql = "SELECT gr_name FROM user_group WHERE id = ?;";
+    var params = [req.body.id];
+
+    db.query(sql, params,(err, rows) => {
+        res.send(rows);
+    })
+})
+
 router.post('/dataSave', function(req, res) {
 
     var sql = "INSERT INTO user_group VALUES(?, ?)";
@@ -70,4 +80,21 @@ router.post('/delete', function (req, res) {
     })
 
 })
+
+router.post('/insert', function(req, res){
+
+    const{calendarId, id, title, isAllDay, start, end, category} = req.body;
+
+    var sql = 'INSERT INTO schedule(title, user_id, start_date, gr_name, end_date, category) VALUES(?, ?, ?, ? ,? ,?);';
+    var params = [title, 'jen', start, calendarId, end, category];
+
+    db.query(sql, params, (err, rows, fields) => {
+        if(err) throw err;
+        else
+        {
+            res.send();
+        }
+    })
+})
+
 module.exports = router;

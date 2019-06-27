@@ -32,24 +32,6 @@ const calendar = new Calendar('#calendar', {
     ],
     startDayOfWeek: 0
   },
-  calendars: [
-    {
-      id: '1',
-      name: 'My Calendar',
-      color: '#ffffff',
-      bgColor: '#9e5fff',
-      dragBgColor: '#9e5fff',
-      borderColor: '#9e5fff'
-    },
-    {
-      id: '2',
-      name: 'Company',
-      color: '#00a9ff',
-      bgColor: '#00a9ff',
-      dragBgColor: '#00a9ff',
-      borderColor: '#00a9ff'
-    }
-  ],
   template: {
     popupDetailLocation(schedule) {
       return `Location : ${schedule.location}`;
@@ -105,29 +87,37 @@ window.App = App;
 calendar.render();
 
 $.ajax({
-  url: '/initial', // 클라이언트가 요청을 보낼 서버의 URL 주소
+  url: '/', // 클라이언트가 요청을 보낼 서버의 URL 주소
   data: {id: 'jen'},
   type: 'POST', // HTTP 요청 방식(GET, POST)
   dataType: 'json', // 서버에서 보내줄 데이터의 타입
   success(json) {
-    console.log(json);
-    calendar.createSchedules(json);
+    let tables = [];
+
+    for (let i = 0; i < json.length; i = i + 1) {
+      tables.push({
+        id: i + 1,
+        name: json[i].gr_name,
+        color: '#ffffff',
+        bgColor: '#9e5fff',
+        dragBgColor: '#9e5fff',
+        borderColor: '#9e5fff'
+      });
+    }
+
+    calendar.setCalendars(tables);
   }
 })
 
-calendar.setCalendarColor('Major Lecture', {
-  color: '#ffffff',
-  bgColor: '#ff5583',
-  dragBgColor: '#ff5583',
-  borderColor: '#ff5583'
-});
-
-calendar.setCalendarColor('General Lecture', {
-  color: '#ffffff',
-  bgColor: '#dc9656',
-  dragBgColor: '#dc9656',
-  borderColor: '#dc9656'
-});
+$.ajax({
+  url: '/initial', // 클라이언트가 요청을 보낼 서버의 URL 주소
+  data: {id: 'jen'},
+  type: 'GET', // HTTP 요청 방식(GET, POST)
+  dataType: 'json', // 서버에서 보내줄 데이터의 타입
+  success(json) {
+    calendar.createSchedules(json);
+  }
+})
 
 // 일정 생성
 calendar.on('beforeCreateSchedule', scheduleData => {
@@ -141,10 +131,27 @@ calendar.on('beforeCreateSchedule', scheduleData => {
     category: scheduleData.isAllDay ? 'allday' : 'time'
   };
 
-  calendar.createSchedules([schedule]);
-  console.log(scheduleData.title, scheduleData.location);
+  const tempDate = schedule.start;
+  const tempDate2 = schedule.end;
 
-  alert('일정 생성 완료');
+  $.ajax({
+    url: '/insert',
+    data: {
+      calendarId: 'Major Lecture',
+      id: String(Math.random() * 100000000000000000),
+      title: scheduleData.title,
+      isAllDay: scheduleData.isAllDay,
+      start: `${tempDate.getFullYear()}-${tempDate.getMonth() + 1}-${tempDate.getDate()} ${tempDate.getHours()}:${tempDate.getMinutes()}:${tempDate.getSeconds()}`,
+      end: `${tempDate2.getFullYear()}-${tempDate2.getMonth() + 1}-${tempDate2.getDate()} ${tempDate2.getHours()}:${tempDate2.getMinutes()}:${tempDate2.getSeconds()}`,
+      category: scheduleData.isAllDay ? 'allday' : 'time'
+    },
+    type: 'POST',
+    dataType: 'json',
+    success() {
+      calendar.createSchedules([schedule]);
+      alert('일정 생성 완료');
+    }
+  });
 });
 
 // 일정 업데이트
