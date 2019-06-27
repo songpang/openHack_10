@@ -173,8 +173,17 @@ calendar.on('beforeUpdateSchedule', scheduleData => {
 
 // 일정 삭제
 calendar.on('beforeDeleteSchedule', scheduleData => {
-  const {schedule, start, end} = scheduleData;
+  const {schedule} = scheduleData;
 
-  schedule.start = start;
-  schedule.end = end;
+  $.ajax({
+    url: '/delete',
+    data: {
+      id: schedule.id
+    },
+    type: 'POST',
+    dataType: 'json',
+    success() {
+      calendar.deleteSchedule(schedule.id, schedule.calendarId);
+    }
+  });
 });

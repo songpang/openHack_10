@@ -56,7 +56,18 @@ router.post('/update', function (req, res) {
 
 router.post('/delete', function (req, res) {
 
+    const id = req.body.id;
 
+    var sql = 'DELETE FROM schedule WHERE schedule_id = ?';
+    var params = [id];
+
+    db.query(sql, params, (err, rows, fields) => {
+        if(err) throw err;
+        else
+        {
+            res.send();
+        }
+    })
 
 })
 module.exports = router;
