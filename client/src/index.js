@@ -51,7 +51,7 @@ const App = {
       dataType: 'json' // 서버에서 보내줄 데이터의 타입
     });
     const plusUl = document.createElement('li');
-    plusUl.innerHTML = `<a style=" display: flex; justify-content: space-between;"><p>${groupname}</p><img src = "./public/assets/img/자산 7.png"/></a>`;
+    plusUl.innerHTML = `<a style=" display: flex; justify-content: space-between;"><p>${groupname}</p><img src = "/img/자산 7.png"/></a>`;
     document.getElementById('a').appendChild(plusUl);
   },
   changeMonth() {
@@ -112,7 +112,7 @@ $.ajax({
 $.ajax({
   url: '/initial', // 클라이언트가 요청을 보낼 서버의 URL 주소
   data: {id: 'jen'},
-  type: 'GET', // HTTP 요청 방식(GET, POST)
+  type: 'POST', // HTTP 요청 방식(GET, POST)
   dataType: 'json', // 서버에서 보내줄 데이터의 타입
   success(json) {
     calendar.createSchedules(json);
