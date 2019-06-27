@@ -7,21 +7,60 @@ const calendar = new Calendar('#calendar', {
   defaultView: 'month',
   useCreationPopup: true,
   useDetailPopup: true,
-  taskView: false,
+  // taskView: false,
   month: {
-    daynames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+    daynames: [
+      '일요일',
+      '월요일',
+      '화요일',
+      '수요일',
+      '목요일',
+      '금요일',
+      '토요일'
+    ],
     startDayOfWeek: 0
   },
   week: {
-    daynames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+    daynames: [
+      '일요일',
+      '월요일',
+      '화요일',
+      '수요일',
+      '목요일',
+      '금요일',
+      '토요일'
+    ],
     startDayOfWeek: 0
+  },
+  calendars: [
+    {
+      id: '1',
+      name: 'My Calendar',
+      color: '#ffffff',
+      bgColor: '#9e5fff',
+      dragBgColor: '#9e5fff',
+      borderColor: '#9e5fff'
+    },
+    {
+      id: '2',
+      name: 'Company',
+      color: '#00a9ff',
+      bgColor: '#00a9ff',
+      dragBgColor: '#00a9ff',
+      borderColor: '#00a9ff'
+    }
+  ],
+  template: {
+    popupDetailLocation: function(schedule) {
+      return 'Location : ' + schedule.location;
+  }
   }
 });
 
 const App = {
   plusFun() {
     const plusUl = document.createElement('li');
-    plusUl.innerHTML = '<a><i class="nc-icon nc-bank"></i><p>Dashboard</p></a>';
+    plusUl.innerHTML = '<a><i class='nc-icon nc-bank'></i><p>Dashboard</p></a>';
     document.getElementById('a').appendChild(plusUl);
   },
   changeMonth() {
@@ -32,12 +71,28 @@ const App = {
   },
   changeDay() {
     calendar.changeView('day', true);
+  },
+  changeCalendar: function() {
+    calendar.id[0].render();
+  },
+  clear: function() {
+    calendar.clear();
+    calendar.createSchedules(schedules, true);
+    // calendar.render();
+  },
+  changePrev: function() {
+    calendar.prev();
+  },
+  changeNext: function() {
+    calendar.next();
+  },
+  changeHide: function() {
+    calendar.render();
   }
 };
 
 window.App = App;
 
-calendar.render();
 calendar.createSchedules([
   {
     id: '1',
