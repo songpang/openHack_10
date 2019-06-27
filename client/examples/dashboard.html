@@ -14,7 +14,7 @@
   <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <!-- <link href="../assets/demo/demo.css" rel="stylesheet" /> -->
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -23,16 +23,13 @@
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-    <div class="logo">
-        <h1>KLAYTN</h1>
-      </div>
       <div class="logo">
-        <a href="#" class="simple-text logo-mini">
+        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
           <div class="logo-image-small">
             <img src="../assets/img/logo-small.png">
           </div>
         </a>
-        <a href="#" class="simple-text logo-normal">
+        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
           KLEANDER
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -40,15 +37,15 @@
         </a>
       </div>
       <div class="sidebar-wrapper">
-        <ul id = 'a' class="nav">
+        <ul class="nav">
           <li class="active ">
             <a href="./dashboard.html">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li class = "active">
-            <a>
+          <li>
+            <a href="./icons.html">
               <i class="nc-icon nc-diamond"></i>
               <p>Icons</p>
             </a>
@@ -66,11 +63,13 @@
             </a>
           </li>
 
+          <li class="active-pro">
+            <a href="./upgrade.html">
+              <i class="nc-icon nc-spaceship"></i>
+              <p>Upgrade to PRO</p>
+            </a>
+          </li>
         </ul>
-        <div style = "text-align: center">
-        <a onclick = 'App.plusFun()' class="btn">Hello</a>
-        <a onclick = 'App.changeWeek()' class="btn">Hello</a>
-       </div>  
       </div>
     </div>
     <div class="main-panel">
@@ -85,7 +84,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand">KLAY : 2</a>
+            <a class="navbar-brand" href="#pablo">Paper Dashboard 2</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -139,6 +138,7 @@
       </nav>
       <!-- End Navbar -->
 <div class = "content">
+    <h1>TOAST UI Calendar</h1>
     <div id="calendar" style="height: 800px;"></div>
 </div>
 
@@ -150,7 +150,7 @@
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
   <script src="../assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -158,16 +158,13 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
   <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-  <!-- <script src="../assets/demo/demo.js"></script> -->
-  <!-- <script>
+  <script src="../assets/demo/demo.js"></script>
+  <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
       demo.initChartsPages();
     });
-  </script> -->
-  <script type='text/javascript'>
-
-</script>
+  </script>
 </body>
 
 </html>
