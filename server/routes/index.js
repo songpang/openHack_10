@@ -22,4 +22,20 @@ router.post('/dataSave', function(req, res) {
   });
 })
 
+router.post('/initial', function (req, res) {
+
+    var user_id = req.body.id;
+    console.log(user_id);
+    var sql = 'SELECT schedule_id as "id", gr_name as "calendarId", title, category, start_date as "start", end_date as "end" FROM schedule WHERE user_id = ' + "'" + user_id + "'" + ';';
+
+    db.query(sql, (err, rows) => {
+        if(err) throw err;
+        else
+        {
+            res.send(rows);
+        }
+    })
+
+})
+
 module.exports = router;

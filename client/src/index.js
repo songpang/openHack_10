@@ -3,8 +3,6 @@ import 'tui-calendar/dist/tui-calendar.css';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
-const db = require('../lib/db');
-
 const calendar = new Calendar('#calendar', {
   defaultView: 'month',
   useCreationPopup: true,
@@ -80,6 +78,9 @@ const App = {
   changeDay() {
     calendar.changeView('day', true);
   },
+  changeWeek() {
+    calendar.changeView('week', true);
+  },
   changeCalendar() {
     calendar.id[0].render();
   },
@@ -102,27 +103,17 @@ const App = {
 window.App = App;
 
 calendar.render();
-calendar.createSchedules([
-  {
-    id: '1',
-    calendarId: 'Major Lecture',
-    title: '자료 구조',
-    category: 'time',
-    start: '2019-06-23T10:30:00',
-    end: '2019-06-23T12:30:00'
-  },
-  {
-    id: '2',
-    calendarId: 'General Lecture',
-    title: '건강과 영양',
-    location: '구리시',
-    category: 'time',
-    dueDateClass: '',
-    start: '2019-06-24T14:30:00',
-    end: '2019-06-24T16:30:00',
-    isReadOnly: true // schedule is read-only
+
+$.ajax({
+  url: '/initial', // 클라이언트가 요청을 보낼 서버의 URL 주소
+  data: {id: 'jen'},
+  type: 'POST', // HTTP 요청 방식(GET, POST)
+  dataType: 'json', // 서버에서 보내줄 데이터의 타입
+  success(json) {
+    console.log(json);
+    calendar.createSchedules(json);
   }
-]);
+})
 
 calendar.setCalendarColor('Major Lecture', {
   color: '#ffffff',
