@@ -51,48 +51,46 @@ const calendar = new Calendar('#calendar', {
     }
   ],
   template: {
-    popupDetailLocation: function(schedule) {
-      return 'Location : ' + schedule.location;
-  }
+    popupDetailLocation(schedule) {
+      return `Location : ${schedule.location}`;
+    }
   }
 });
 
 const App = {
   plusFun() {
     const plusUl = document.createElement('li');
-    plusUl.innerHTML = '<a><i class='nc-icon nc-bank'></i><p>Dashboard</p></a>';
+    plusUl.innerHTML = '<a><i class="nc-icon nc-bank"></i><p>Dashboard</p></a>';
     document.getElementById('a').appendChild(plusUl);
   },
   changeMonth() {
     calendar.changeView('month', true);
   },
-  changeWeek() {
-    calendar.changeView('week', true);
-  },
   changeDay() {
     calendar.changeView('day', true);
   },
-  changeCalendar: function() {
+  changeCalendar() {
     calendar.id[0].render();
   },
-  clear: function() {
+  clear() {
     calendar.clear();
     calendar.createSchedules(schedules, true);
     // calendar.render();
   },
-  changePrev: function() {
+  changePrev() {
     calendar.prev();
   },
-  changeNext: function() {
+  changeNext() {
     calendar.next();
   },
-  changeHide: function() {
+  changeHide() {
     calendar.render();
   }
 };
 
 window.App = App;
 
+calendar.render();
 calendar.createSchedules([
   {
     id: '1',
@@ -128,7 +126,7 @@ calendar.setCalendarColor('General Lecture', {
   borderColor: '#dc9656'
 });
 
-//  일정 생성
+// 일정 생성
 calendar.on('beforeCreateSchedule', scheduleData => {
   const schedule = {
     calendarId: 'Major Lecture',
@@ -145,18 +143,17 @@ calendar.on('beforeCreateSchedule', scheduleData => {
   alert('일정 생성 완료');
 });
 
-//  일정 업데이트
+// 일정 업데이트
 calendar.on('beforeUpdateSchedule', scheduleData => {
   const {schedule} = scheduleData;
 
   calendar.updateSchedule(schedule.id, schedule.calendarId, schedule);
 });
 
-//  일정 삭제
+// 일정 삭제
 calendar.on('beforeDeleteSchedule', scheduleData => {
   const {schedule, start, end} = scheduleData;
 
   schedule.start = start;
   schedule.end = end;
-  calendar.deleteSchedule(schedule.id, schedule.calendarId);
 });
