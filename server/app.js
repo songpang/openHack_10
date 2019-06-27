@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -23,6 +25,15 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+
+app.use(session({
+  secret: '@#@$DBSIGN#@$#$',
+  resave: false,
+  saveUninitialized: true
+}));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

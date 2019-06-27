@@ -105,6 +105,8 @@
     }
     /* Input css */
   </style>
+
+</html>
 </head>
 
 <body class="">
@@ -131,30 +133,16 @@
     </div>
     <div class="sidebar-wrapper">
       <ul id="a" class="nav">
+        <% if (result_list.length) { %>
+        <% result_list.forEach(function (result) { %>
         <li class="active ">
-          <a href="./dashboard.html">
-            <i class="nc-icon nc-bank"></i>
-            <p>Dashboard</p>
+          <a href="./dashboard.html" style="display: flex; justify-content: space-between;">
+            <p><%=result['gr_name']%></p>
+            <img src = "/img/자산 7.png"/>
           </a>
         </li>
-        <li class="active">
-          <a>
-            <i class="nc-icon nc-diamond"></i>
-            <p>Icons</p>
-          </a>
-        </li>
-        <li>
-          <a href="./map.html">
-            <i class="nc-icon nc-pin-3"></i>
-            <p>Maps</p>
-          </a>
-        </li>
-        <li>
-          <a href="./notifications.html">
-            <i class="nc-icon nc-bell-55"></i>
-            <p>Notifications</p>
-          </a>
-        </li>
+          <% }) %>
+        <%}%>
       </ul>
       <div style="text-align: center">
         <button
@@ -183,25 +171,22 @@
         <div class="modal-body" style="text-align: center">
           <i class="nc-icon nc-badge" style="font-size: 50px"></i>
           <p>Please input your group name !</p>
-          <form action="index.ejs" method="post">
           <div class="form-group">
             <label for="inp" class="inp">
-              <input type="text" id="inp" placeholder="&nbsp;"/>
+              <input type="text" id="groupname" placeholder="&nbsp;"/>
               <span class="label">Group Name</span>
               <span class="border"></span>
             </label>
-
-            <p>&nbsp;</p>
+            <p> </p>
 
             <label for="inp" class="inp">
-              <input type="text" id="inp" placeholder="&nbsp;" />
-              <span class="label">Description</span>
+              <input type="text" id="group_desc" placeholder="&nbsp;"/>
+              <span class="label" >Description</span>
               <span class="border"></span>
             </label>
           </div>
         </div>
         <button
-                type="submit"
                 style="padding-right: 30px"
                 onclick="App.plusFun()"
                 class="btn"
@@ -209,12 +194,12 @@
         >
           Plus Group
         </button>
-        </form>
       </div>
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
   </div>
+
   <!-- /.modal -->
   <!-- adding sharing modal start -->
   <div class="modal fade" tabindex="-1" role="dialog" id="shareModal">
@@ -296,7 +281,7 @@
               </div>
             </div>
           </form>
-          &nbsp;&nbsp;&nbsp;
+
           <div id="sharelink">
             <a href="#" class="simple-text logo-mini">
               <div style="display: inline-flex;">

@@ -3,6 +3,8 @@ import 'tui-calendar/dist/tui-calendar.css';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
+const db = require('../lib/db');
+
 const calendar = new Calendar('#calendar', {
   defaultView: 'month',
   useCreationPopup: true,
@@ -58,11 +60,18 @@ const calendar = new Calendar('#calendar', {
 });
 
 const App = {
-  plusFun: function() {
+  plusFun() {
     const groupname = $('#groupname').val();
-    console.log(groupname);
+
+    $.ajax({
+      url: '/dataSave', // 클라이언트가 요청을 보낼 서버의 URL 주소
+      data: {id: 'jen',
+        groupName: groupname}, // HTTP 요청과 함께 서버로 보낼 데이터
+      type: 'POST', // HTTP 요청 방식(GET, POST)
+      dataType: 'json' // 서버에서 보내줄 데이터의 타입
+    });
     const plusUl = document.createElement('li');
-    plusUl.innerHTML = `<a style=" display: flex; justify-content: space-between;"><p>${groupname}</p><img src = "../assets/img/자산 7.png"/></a>`;
+    plusUl.innerHTML = `<a style=" display: flex; justify-content: space-between;"><p>${groupname}</p><img src = "./public/assets/img/자산 7.png"/></a>`;
     document.getElementById('a').appendChild(plusUl);
   },
   changeMonth() {
@@ -76,7 +85,7 @@ const App = {
   },
   clear() {
     calendar.clear();
-    calendar.createSchedules(schedules, true);
+  //   calendar.createSchedules(schedules, true);
     // calendar.render();
   },
   changePrev() {

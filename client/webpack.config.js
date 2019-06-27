@@ -31,5 +31,8 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new MiniCssExtractPlugin()
   ],
+  node: {
+    fs: 'empty'
+  },
   devtool: 'source-map'
 };

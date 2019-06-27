@@ -2,7 +2,8 @@ module.exports = {
     "env": {
         "browser": true,
         "commonjs": true,
-        "es6": true
+        "es6": true,
+        "jquery": true
     },
     "extends": "tui/es6",
     "parserOptions": {
@@ -10,6 +11,7 @@ module.exports = {
         "sourceType": "module"
     },
     rules: {
-      "linebreak-style": 0
+      "linebreak-style": 0,
+        "max-len": 0
     }
 };

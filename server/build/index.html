@@ -1,166 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="utf-8" />
-      <link
-              rel="apple-touch-icon"
-              sizes="76x76"
-              href="../public/assets/img/apple-icon.png"
-            />
-      <link rel="icon" type="image/png" href="../public/assets/img/favicon.png" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-      <meta
-              content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no"
-              name="viewport"
-            />
-      <!--     Fonts and icons     -->
-      <link
-              href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
-              rel="stylesheet"
-            />
-      <link
-              href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
-              rel="stylesheet"
-            />
+<head>
+    <meta charset="utf-8" />
+    <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="/img/apple-icon.png"
+    />
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no"
+            name="viewport"
+    />
+    <!--     Fonts and icons     -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
+            rel="stylesheet"
+    />
 
-      <!-- CSS Files -->
-      <link href="../public/assets/css/bootstrap.min.css" rel="stylesheet" />
-      <link href="../public/assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+    <link
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+            rel="stylesheet"
+    />
 
-      <style>
+    <!-- CSS Files -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+
+    />
+    <style>
         html,
         body {
-          height: 100%;
+            height: 100%;
         }
         body {
-          display: grid;
-          font-family: Avenir;
-          -webkit-text-size-adjust: 100%;
-          -webkit-font-smoothing: antialiased;
+            display: grid;
+            font-family: Avenir;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
         }
         * {
-          box-sizing: border-box;
+            box-sizing: border-box;
         }
         .inp {
-          position: relative;
-          margin: auto;
-          width: 100%;
-          max-width: 280px;
+            position: relative;
+            margin: auto;
+            width: 100%;
+            max-width: 280px;
         }
         .inp .label {
-          position: absolute;
-          top: 16px;
-          left: 0;
-          font-size: 16px;
-          color: #9098a9;
-          font-weight: 500;
-          transform-origin: 0 0;
-          transition: all 0.2s ease;
+            position: absolute;
+            top: 16px;
+            left: 0;
+            font-size: 16px;
+            color: #9098a9;
+            font-weight: 500;
+            transform-origin: 0 0;
+            transition: all 0.2s ease;
         }
         .inp .border {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          height: 2px;
-          width: 100%;
-          background: #07f;
-          transform: scaleX(0);
-          transform-origin: 0 0;
-          transition: all 0.15s ease;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background: #07f;
+            transform: scaleX(0);
+            transform-origin: 0 0;
+            transition: all 0.15s ease;
         }
         .inp input {
-          -webkit-appearance: none;
-          width: 100%;
-          border: 0;
-          font-family: inherit;
-          padding: 12px 0;
-          height: 48px;
-          font-size: 16px;
-          font-weight: 500;
-          border-bottom: 2px solid #c8ccd4;
-          background: none;
-          border-radius: 0;
-          color: #223254;
-          transition: all 0.15s ease;
+            -webkit-appearance: none;
+            width: 100%;
+            border: 0;
+            font-family: inherit;
+            padding: 12px 0;
+            height: 48px;
+            font-size: 16px;
+            font-weight: 500;
+            border-bottom: 2px solid #c8ccd4;
+            background: none;
+            border-radius: 0;
+            color: #223254;
+            transition: all 0.15s ease;
         }
         .inp input:hover {
-          background: rgba(34, 50, 84, 0.03);
+            background: rgba(34, 50, 84, 0.03);
         }
-        .inp input:not(:placeholder-shown)  span {
-          color: #5a667f;
-          transform: translateY(-26px) scale(0.75);
+        .inp input:not(:placeholder-shown) + span {
+            color: #5a667f;
+            transform: translateY(-26px) scale(0.75);
         }
         .inp input:focus {
-          background: none;
-          outline: none;
+            background: none;
+            outline: none;
         }
-        .inp input:focus  span {
-          color: #07f;
-          transform: translateY(-26px) scale(0.75);
+        .inp input:focus + span {
+            color: #07f;
+            transform: translateY(-26px) scale(0.75);
         }
-        .inp input:focus  span  .border {
-          transform: scaleX(1);
+        .inp input:focus + span + .border {
+            transform: scaleX(1);
         }
         /* Input css */
-      </style>
-    <link href="main.css" rel="stylesheet"></head>
+    </style>
 
-  <body class="">
-    <div class="wrapper ">
-        <div class="sidebar" data-color="white" data-active-color="danger">
-          <!--
-         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-     -->
+</html>
+<link href="main.css" rel="stylesheet"></head>
 
-          <div class="logo">
+<body class="">
+<div class="wrapper ">
+    <div class="sidebar" data-color="white" data-active-color="danger">
+        <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+        <div class="logo">
             <h1>KLAYTN</h1>
-          </div>
-          <div class="logo">
+        </div>
+        <div class="logo">
             <a href="#" class="simple-text logo-mini">
-              <div class="logo-image-small">
-                <img src="../public/assets/img/logo-small.png" />
-              </div>
+                <div class="logo-image-small">
+                    <img src="/img/logo-small.png" />
+                </div>
             </a>
             <a href="#" class="simple-text logo-normal">
-              KLEANDER
-              <!-- <div class="logo-image-big">
-             <img src="../public/assets/img/logo-big.png">
-           </div> -->
+                KLEANDER
+                <!-- <div class="logo-image-big">
+                <img src="/img/logo-big.png">
+              </div> -->
             </a>
-          </div>
-          <div class="sidebar-wrapper">
+        </div>
+        <div class="sidebar-wrapper">
             <ul id="a" class="nav">
-              <li class="active ">
-                <a href="./dashboard.html">
-                  <i class="nc-icon nc-bank"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-              <li class="active">
-                <a>
-                  <i class="nc-icon nc-diamond"></i>
-                  <p>Icons</p>
-                </a>
-              </li>
-              <li>
-                <a href="./map.html">
-                  <i class="nc-icon nc-pin-3"></i>
-                  <p>Maps</p>
-                </a>
-              </li>
-              <li>
-                <a href="./notifications.html">
-                  <i class="nc-icon nc-bell-55"></i>
-                  <p>Notifications</p>
-                </a>
-              </li>
+                <li class="active ">
+                    <a href="./dashboard.html" style="display: flex; justify-content: space-between;">
+                        <p>Dashboard</p>
+                        <img src = "/img/자산 7.png"/>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="./dashboard.html" style="display: flex; justify-content: space-between;">
+                        <p>Dashboard</p>
+                        <img src = "/img/자산 7.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="./dashboard.html" style="display: flex; justify-content: space-between;">
+                        <p>Dashboard</p>
+                        <img src = "/img/자산 7.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" style="display: flex; justify-content: space-between;">
+                        <p>Dashboard</p>
+                        <img src = "/img/자산 7.png"/>
+                    </a>
+                </li>
             </ul>
             <div style="text-align: center">
-              <button
-                      class="btn"
-                      data-toggle="modal"
-                      data-target="#loginModal"
-                      style="
+                <button
+                        class="btn"
+                        data-toggle="modal"
+                        data-target="#loginModal"
+                        style="
               width: 50px;
               height: 50px;
               padding: 10px 16px;
@@ -168,226 +171,231 @@
               line-height: 1.33;
               border-radius: 25px;
             "
-                    >
-              +
-              </button>
-            </div>
-          </div>
-</div>
-
-        <!-- adding group modal start -->
-        <div class="modal fade" tabindex="-1" role="dialog" id="loginModal">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-body" style="text-align: center">
-                <i class="nc-icon nc-badge" style="font-size: 50px"></i>
-                <p>Please input your group name !</p>
-                <div class="form-group">
-                  <label for="inp" class="inp">
-                    <input type="text" id="inp" placeholder="&nbsp;" />
-                    <span class="label">Group Name</span>
-                    <span class="border"></span>
-                  </label>
-
-                  <p>&nbsp;</p>
-
-                  <label for="inp" class="inp">
-                    <input type="text" id="inp" placeholder="&nbsp;" />
-                    <span class="label">Description</span>
-                    <span class="border"></span>
-                  </label>
-                </div>
-              </div>
-              <button
-                      style="padding-right: 30px"
-                      onclick="App.plusFun()"
-                      class="btn"
-                      data-dismiss="modal"
-                    >
-                Plus Group
-              </button>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-</div>
-
-        <!-- /.modal -->
-        <!-- adding sharing modal start -->
-        <div class="modal fade" tabindex="-1" role="dialog" id="shareModal">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-body" style="text-align: center">
-                <i class="nc-icon nc-badge" style="font-size: 50px"></i>
-                <p>Please input your friends E-mail for sharing !</p>
-                <div class="form-group">
-                  <label for="inp" class="inp">
-                    <input type="text" id="inp" placeholder="&nbsp;" />
-                    <span class="label">E-mail</span>
-                    <span class="border"></span>
-                  </label>
-
-                  <p>&nbsp;</p>
-
-                  <label for="inp" class="inp">
-                    Send link : https://kleander.co.kr/index
-                  </label>
-                </div>
-</div>
-              <button class="btn" data-dismiss="modal">
-                Sharing!
-              </button>
-</div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-
-        <div class="main-panel">
-          <!-- Navbar -->
-          <nav
-                  class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent"
                 >
-            <div class="container-fluid">
-              <div class="navbar-wrapper">
-                <div class="navbar-toggle">
-                  <button type="button" class="navbar-toggler">
-                    <span class="navbar-toggler-bar bar1"></span>
-                    <span class="navbar-toggler-bar bar2"></span>
-                    <span class="navbar-toggler-bar bar3"></span>
-                  </button>
-                </div>
-                <a class="navbar-brand">KLAY : 2</a>
-              </div>
-              <button
-                      class="navbar-toggler"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#navigation"
-                      aria-controls="navigation-index"
-                      aria-expanded="false"
-                      aria-label="Toggle navigation"
-                    >
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-                <span class="navbar-toggler-bar navbar-kebab"></span>
-              </button>
-              <div
-                      class="collapse navbar-collapse justify-content-end"
-                      id="navigation"
-                      style="margin-bottom:-15px;"
-                    >
-                <form>
-                  <div class="input-group no-border">
-                    <input
-                            type="text"
-                            value=""
-                            class="form-control"
-                            placeholder="Search Me !"
-                          />
-                    <div class="input-group-append">
-                      <div class="input-group-text">
-                        <i class="nc-icon nc-zoom-split"></i>
-                      </div>
-</div>
-</div>
-                </form>
-                &nbsp;&nbsp;&nbsp;
-                <div id="sharelink">
-                  <a href="#" class="simple-text logo-mini">
-                    <div style="display: inline-flex;">
-                      <div class="logo-image-small">
-                        <img
-                                src="../public/assets/img/logo-small.png "
-                                style="width: 40px; height: 40px"
-                              />
-                      </div>
-                      <div class="logo-image-small" style="margin-left: -10px;">
-                        <img
-                                src="../public/assets/img/logo-small.png"
-                                style="width: 40px; height: 40px;"
-                              />
-                      </div>
-                      <div class="logo-image-small" style="margin-left: -10px;">
-                        <img
-                                src="../public/assets/img/logo-small.png"
-                                style="width: 40px; height: 40px"
-                              />
-                      </div>
-                      <h3 style="color: #000000">...&nbsp;</h3>
-                    </div>
-</a>
-                  <button
-                          class="btn"
-                          data-toggle="modal"
-                          data-target="#shareModal"
-                        >
-                    <i class="nc-icon nc-vector" style="font-size: 17px"></i>
-                    &nbsp;&nbsp; Share
-                  </button>
-                </div>
-              </div>
+                    +
+                </button>
             </div>
-          </nav>
-          <!-- End Navbar -->
-          <div class="content">
-            <div style="display:flex; justify-content : space-between;">
-              <div
-                      class="btn-toolbar"
-                      role="toolbar"
-                      aria-label="Toolbar with button groups"
-                    >
-                <div class="btn-group mr-2" role="group" style="height: 65px">
-                  <button onclick="App.changeHide()" class="btn btn-secondary">
-                    Clear
-                  </button>
-                </div>
-                  <div class="btn-group mr-2" role="group" style="height: 65px">
-                    <button onclick="App.changePrev()" class="btn btn-secondary">
-                      <
-                    </button>
-                    <button onclick="App.changeNext()" class="btn btn-secondary">
-                      >
-                    </button>
-</div>
-                </div>
-
-              <div class="btn-group" role="group" style="height: 65px">
-                <button onclick="App.changeMonth()" class="btn btn-secondary">
-                  Monthly
-                </button>
-                <button onclick="App.changeWeek()" class="btn btn-secondary">
-                  Weekly
-                </button>
-                <button onclick="App.changeDay()" class="btn btn-secondary">
-                  Daily
-                </button>
-              </div>
-</div>
-            <div id="calendar" style="height: 760px;"></div>
-</div>
         </div>
+    </div>
+
+    <!-- adding group modal start -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="loginModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body" style="text-align: center">
+                    <i class="nc-icon nc-badge" style="font-size: 50px"></i>
+                    <p>Please input your group name !</p>
+                    <div class="form-group">
+                        <label for="inp" class="inp">
+                            <input type="text" id="groupname" placeholder="&nbsp;"/>
+                            <span class="label">Group Name</span>
+                            <span class="border"></span>
+                        </label>
+                        <p> </p>
+
+                        <label for="inp" class="inp">
+                            <input type="text" id="group_desc" placeholder="&nbsp;"/>
+                            <span class="label" >Description</span>
+                            <span class="border"></span>
+                        </label>
+                    </div>
+                </div>
+                <button
+                        style="padding-right: 30px"
+                        onclick="App.plusFun()"
+                        class="btn"
+                        data-dismiss="modal"
+                >
+                    Plus Group
+                </button>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- /.modal -->
+    <!-- adding sharing modal start -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="shareModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body" style="text-align: center">
+                    <i class="nc-icon nc-badge" style="font-size: 50px"></i>
+                    <p>Please input your friends E-mail for sharing !</p>
+                    <div class="form-group">
+                        <label for="inp" class="inp">
+                            <input type="text" id="inp" placeholder="&nbsp;" />
+                            <span class="label">E-mail</span>
+                            <span class="border"></span>
+                        </label>
+
+                        <p>&nbsp;</p>
+
+                        <label for="inp" class="inp">
+                            Send link : https://kleander.co.kr/index
+                        </label>
+                    </div>
+                </div>
+                <button class="btn" data-dismiss="modal">
+                    Sharing!
+                </button>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div class="main-panel">
+        <!-- Navbar -->
+        <nav
+                class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent"
+        >
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <div class="navbar-toggle">
+                        <button type="button" class="navbar-toggler">
+                            <span class="navbar-toggler-bar bar1"></span>
+                            <span class="navbar-toggler-bar bar2"></span>
+                            <span class="navbar-toggler-bar bar3"></span>
+                        </button>
+                    </div>
+                    <a class="navbar-brand">KLAY : 2</a>
+                </div>
+                <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navigation"
+                        aria-controls="navigation-index"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                </button>
+                <div
+                        class="collapse navbar-collapse justify-content-end"
+                        id="navigation"
+                        style="margin-bottom:-15px;"
+                >
+                    <form>
+                        <div class="input-group no-border">
+                            <input
+                                    type="text"
+                                    value=""
+                                    class="form-control"
+                                    placeholder="Search Me !"
+                            />
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <i class="nc-icon nc-zoom-split"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div id="sharelink">
+                        <a href="#" class="simple-text logo-mini">
+                            <div style="display: inline-flex;">
+                                <div class="logo-image-small">
+                                    <img
+                                            src="/img/logo-small.png "
+                                            style="width: 40px; height: 40px"
+                                    />
+                                </div>
+                                <div class="logo-image-small" style="margin-left: -10px;">
+                                    <img
+                                            src="/img/logo-small.png"
+                                            style="width: 40px; height: 40px;"
+                                    />
+                                </div>
+                                <div class="logo-image-small" style="margin-left: -10px;">
+                                    <img
+                                            src="/img/logo-small.png"
+                                            style="width: 40px; height: 40px"
+                                    />
+                                </div>
+                                <h3 style="color: #000000">...&nbsp;</h3>
+                            </div>
+                        </a>
+                        <button
+                                class="btn"
+                                data-toggle="modal"
+                                data-target="#shareModal"
+                        >
+                            <i class="nc-icon nc-vector" style="font-size: 17px"></i>
+                            &nbsp;&nbsp; Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+        <div class="content">
+            <div style="display:flex; justify-content : space-between;">
+                <div
+                        class="btn-toolbar"
+                        role="toolbar"
+                        aria-label="Toolbar with button groups"
+                >
+                    <div class="btn-group mr-2" role="group" style="height: 65px">
+                        <button onclick="App.changeHide()" class="btn btn-secondary">
+                            Clear
+                        </button>
+                    </div>
+                    <div class="btn-group mr-2" role="group" style="height: 65px">
+                        <button onclick="App.changePrev()" class="btn btn-secondary">
+                            <
+                        </button>
+                        <button onclick="App.changeNext()" class="btn btn-secondary">
+                            >
+                        </button>
+                    </div>
+                </div>
+
+                <div class="btn-group" role="group" style="height: 65px">
+                    <button onclick="App.changeMonth()" class="btn btn-secondary">
+                        Monthly
+                    </button>
+                    <button onclick="App.changeWeek()" class="btn btn-secondary">
+                        Weekly
+                    </button>
+                    <button onclick="App.changeDay()" class="btn btn-secondary">
+                        Daily
+                    </button>
+                </div>
+            </div>
+            <div id="calendar" style="height: 760px;"></div>
+        </div>
+    </div>
 </div>
+</div>
+<!--   Core JS Files   -->
+<script src="/js/core/jquery.min.js"></script>
+<script src="/js/core/popper.min.js"></script>
+<script src="/js/core/bootstrap.min.js"></script>
+<script src="/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Google Maps Plugin    -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
+<!-- Chart JS -->
+<script src="/js/plugins/chartjs.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+<!-- <script src="/demo/demo.js"></script> -->
+<!-- <script>
+  $(document).ready(function() {
+    // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+    demo.initChartsPages();
+  });
+</script> -->
+<script type='text/javascript' src="bundle.js">
 
-    <!--   Core JS Files   -->
-    <script src="../public/assets/js/core/jquery.min.js"></script>
-    <script src="../public/assets/js/core/popper.min.js"></script>
-    <script src="../public/assets/js/core/bootstrap.min.js"></script>
-    <script src="../public/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!--  Google Maps Plugin    -->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
-    <!-- Chart JS -->
-    <script src="../public/assets/js/plugins/chartjs.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="../public/assets/js/plugins/bootstrap-notify.js"></script>
-    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-    <script
-              src="../public/assets/js/paper-dashboard.min.js?v=2.0.0"
-              type="text/javascript"
-            ></script>
-
-\ No newline at end of file
-    <script type="text/javascript"></script>
-  <script type="text/javascript" src="bundle.js"></script></body>
+</script>
+<script type="text/javascript" src="bundle.js"></script></body>
 </html>
