@@ -4,7 +4,8 @@
   "description": "NHN Forward 2018",
   "main": "./index.js",
   "scripts": {
-    "serve": "webpack-dev-server"
+    "serve": "webpack-dev-server",
+    "start": "react-scripts start"
   },
   "repository": {
     "type": "git",
@@ -33,8 +34,14 @@
     "eslint-loader": "^2.1.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.3",
-    "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8"
-  }
+  },
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "nodemon": "^1.19.1",
+    "path": "^0.12.7",
+    "webpack": "^4.35.0"
+  },
+  "proxy": "http://localhost:4000/"
 }
