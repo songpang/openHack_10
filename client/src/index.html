@@ -30,6 +30,7 @@
 
     />
     <style>
+<<<<<<< HEAD
         html,
         body {
             height: 100%;
@@ -104,8 +105,89 @@
             transform: scaleX(1);
         }
         /* Input css */
+=======
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        display: grid;
+        font-family: Avenir;
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .inp {
+        position: relative;
+        margin: auto;
+        width: 100%;
+        max-width: 280px;
+      }
+      .inp .label {
+        position: absolute;
+        top: 16px;
+        left: 0;
+        font-size: 16px;
+        color: #9098a9;
+        font-weight: 500;
+        transform-origin: 0 0;
+        transition: all 0.2s ease;
+      }
+      .inp .border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: #07f;
+        transform: scaleX(0);
+        transform-origin: 0 0;
+        transition: all 0.15s ease;
+      }
+      .inp input {
+        -webkit-appearance: none;
+        width: 100%;
+        border: 0;
+        font-family: inherit;
+        padding: 12px 0;
+        height: 48px;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 2px solid #c8ccd4;
+        background: none;
+        border-radius: 0;
+        color: #223254;
+        transition: all 0.15s ease;
+      }
+      .inp input:hover {
+        background: rgba(34, 50, 84, 0.03);
+      }
+      .inp input:not(:placeholder-shown) + span {
+        color: #5a667f;
+        transform: translateY(-26px) scale(0.75);
+      }
+      .inp input:focus {
+        background: none;
+        outline: none;
+      }
+      .inp input:focus + span {
+        color: #07f;
+        transform: translateY(-26px) scale(0.75);
+      }
+      .inp input:focus + span + .border {
+        transform: scaleX(1);
+      }
+
+      psidebar {
+        font-size:15px;
+      }
+      /* Input css */
+>>>>>>> origin/frontend
     </style>
 
+<<<<<<< HEAD
 </html>
 </head>
 
@@ -164,6 +246,46 @@
                         data-toggle="modal"
                         data-target="#loginModal"
                         style="
+=======
+  <body class="">
+
+    <div class="wrapper ">
+      <div class="sidebar" data-color="white" data-active-color="danger">
+        <div class="logo" style = "text-align: center;">
+          <h2>링크캘린더</h2>
+        </div>
+        <div class="logo" style="display: flex">
+          <a>
+            <div>
+              <img src="../assets/img/logo-small.png" style="width: 60px; height: 60px"/>
+            </div>
+          </a>
+          <a href="#" class="simple-text logo-normal">
+              &nbsp;&nbsp;&nbsp;&nbsp;hacker10
+          </a>
+        </div>
+        <div class="sidebar-wrapper">
+          <ul id="a" class="nav">
+            <li>
+              <a href="./dashboard.html" style="display: flex; justify-content: space-between;" >
+                <p style="font-size: 18px;">모든공유일정</p>
+                <img src = "../assets/img/자산 7.png"/>
+              </a>
+            </li>
+            <li>
+                <a href="#" style="display: flex; justify-content: space-between;">
+                  <p>Dashboard</p>
+                  <img src = "../assets/img/자산 7.png"/>
+                </a>
+            </li>
+          </ul>
+          <div style="text-align: center">
+            <button
+              class="btn"
+              data-toggle="modal"
+              data-target="#plusModal"
+              style="
+>>>>>>> origin/frontend
               width: 50px;
               height: 50px;
               padding: 10px 16px;
@@ -213,11 +335,19 @@
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
+<<<<<<< HEAD
     </div>
 
     <!-- /.modal -->
     <!-- adding sharing modal start -->
     <div class="modal fade" tabindex="-1" role="dialog" id="shareModal">
+=======
+      </div>
+      <!-- /.modal -->
+
+      <!-- adding sharing modal start -->
+      <div class="modal fade" tabindex="-1" role="dialog" id="shareModal">
+>>>>>>> origin/frontend
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-body" style="text-align: center">
@@ -247,6 +377,7 @@
     </div>
     <!-- /.modal -->
 
+<<<<<<< HEAD
     <div class="main-panel">
         <!-- Navbar -->
         <nav
@@ -369,6 +500,47 @@
                 </div>
             </div>
             <div id="calendar" style="height: 760px;"></div>
+=======
+      <div class="main-panel">
+        
+        <div class="content">
+            <div id = "setdate" style="text-align: center; margin-bottom: -20px;">
+              </div>
+          <div style="display:flex; justify-content : space-between;">
+            <div
+              class="btn-toolbar"
+              role="toolbar"
+              aria-label="Toolbar with button groups"
+            >
+
+                <button onclick="App.clear()" class="btn btn-secondary">
+                  Today
+                </button>
+
+              <!-- <div class="btn-group mr-2" role="group" style="height: 65px">
+                <button onclick="App.changePrev()" class="btn btn-secondary">
+                  <
+                </button>
+                <button onclick="App.changeNext()" class="btn btn-secondary">
+                  >
+                </button>
+              </div> -->
+            </div>
+
+            <div>
+              <button onclick="App.changeMonth()" class="btn btn-secondary">
+                Monthly
+              </button>
+              <button onclick="App.changeWeek()" class="btn btn-secondary">
+                Weekly
+              </button>
+              <button onclick="App.changeDay()" class="btn btn-secondary" style="font-si">
+                Daily
+              </button>
+            </div>
+          </div>
+          <div id="calendar" style="height: 700px;"></div>
+>>>>>>> origin/frontend
         </div>
     </div>
 </div>

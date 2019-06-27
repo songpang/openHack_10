@@ -37,6 +37,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+<<<<<<< HEAD
     "babel-register": "^6.26.0",
     "body-parser": "^1.19.0",
     "ejs": "^2.6.2",
@@ -48,5 +49,9 @@
     "style-loader": "^0.23.1",
     "tui-calendar": "^1.12.1",
     "webpack": "^4.35.0"
+=======
+    "caver-js": "^1.0.0",
+    "tui-calendar": "^1.12.1"
+>>>>>>> origin/frontend
   }
 }
