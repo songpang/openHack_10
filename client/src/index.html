@@ -107,60 +107,59 @@
 
   <body class="">
     <div class="wrapper ">
-        <div class="sidebar" data-color="white" data-active-color="danger">
-          <!--
-         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-     -->
-
-          <div class="logo">
-            <h1>KLAYTN</h1>
-          </div>
-          <div class="logo">
-            <a href="#" class="simple-text logo-mini">
-              <div class="logo-image-small">
-                <img src="../assets/img/logo-small.png" />
-              </div>
-            </a>
-            <a href="#" class="simple-text logo-normal">
-              KLEANDER
-              <!-- <div class="logo-image-big">
-             <img src="../assets/img/logo-big.png">
-           </div> -->
-            </a>
-          </div>
-          <div class="sidebar-wrapper">
-            <ul id="a" class="nav">
-              <li class="active ">
-                <a href="./dashboard.html">
-                  <i class="nc-icon nc-bank"></i>
+      <div class="sidebar" data-color="white" data-active-color="danger">
+        <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+        <div class="logo">
+          <h1>KLAYTN</h1>
+        </div>
+        <div class="logo">
+          <a href="#" class="simple-text logo-mini">
+            <div class="logo-image-small">
+              <img src="../assets/img/logo-small.png" />
+            </div>
+          </a>
+          <a href="#" class="simple-text logo-normal">
+            KLEANDER
+            <!-- <div class="logo-image-big">
+            <img src="../assets/img/logo-big.png">
+          </div> -->
+          </a>
+        </div>
+        <div class="sidebar-wrapper">
+          <ul id="a" class="nav">
+            <li class="active ">
+              <a href="./dashboard.html" style="display: flex; justify-content: space-between;">
+                <p>Dashboard</p>
+                <img src = "../assets/img/자산 7.png"/>
+              </a>
+            </li>
+            <li class="active">
+                <a href="./dashboard.html" style="display: flex; justify-content: space-between;">
                   <p>Dashboard</p>
+                  <img src = "../assets/img/자산 7.png"/>
                 </a>
-              </li>
-              <li class="active">
-                <a>
-                  <i class="nc-icon nc-diamond"></i>
-                  <p>Icons</p>
+            </li>
+            <li>
+                <a href="./dashboard.html" style="display: flex; justify-content: space-between;">
+                  <p>Dashboard</p>
+                  <img src = "../assets/img/자산 7.png"/>
                 </a>
-              </li>
-              <li>
-                <a href="./map.html">
-                  <i class="nc-icon nc-pin-3"></i>
-                  <p>Maps</p>
+            </li>
+            <li>
+                <a href="#" style="display: flex; justify-content: space-between;">
+                  <p>Dashboard</p>
+                  <img src = "../assets/img/자산 7.png"/>
                 </a>
-              </li>
-              <li>
-                <a href="./notifications.html">
-                  <i class="nc-icon nc-bell-55"></i>
-                  <p>Notifications</p>
-                </a>
-              </li>
-            </ul>
-            <div style="text-align: center">
-              <button
-                      class="btn"
-                      data-toggle="modal"
-                      data-target="#loginModal"
-                      style="
+            </li>
+          </ul>
+          <div style="text-align: center">
+            <button
+              class="btn"
+              data-toggle="modal"
+              data-target="#plusModal"
+              style="
               width: 50px;
               height: 50px;
               padding: 10px 16px;
@@ -175,28 +174,25 @@
           </div>
 </div>
 
-        <!-- adding group modal start -->
-        <div class="modal fade" tabindex="-1" role="dialog" id="loginModal">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-body" style="text-align: center">
-                <i class="nc-icon nc-badge" style="font-size: 50px"></i>
-                <p>Please input your group name !</p>
-                <div class="form-group">
-                  <label for="inp" class="inp">
-                    <input type="text" id="inp" placeholder="&nbsp;" />
-                    <span class="label">Group Name</span>
-                    <span class="border"></span>
-                  </label>
-
+      <!-- adding group modal start -->
+      <div class="modal fade" tabindex="-1" role="dialog" id="plusModal">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-body" style="text-align: center">
+              <i class="nc-icon nc-badge" style="font-size: 50px"></i>
+              <p>Please input your group name !</p>
+              <div class="form-group">
+                <label for="inp" class="inp">
+                  <input type="text" id="groupname" placeholder="&nbsp;" />
+                  <span class="label">Group Name</span>
+                  <span class="border"></span>
+                </label>
                   <p>&nbsp;</p>
-
-                  <label for="inp" class="inp">
-                    <input type="text" id="inp" placeholder="&nbsp;" />
-                    <span class="label">Description</span>
-                    <span class="border"></span>
-                  </label>
-                </div>
+                <label for="inp" class="inp">
+                  <input type="text" id="group_desc" placeholder="&nbsp;" />
+                  <span class="label">Description</span>
+                  <span class="border"></span>
+                </label>
               </div>
               <button
                       style="padding-right: 30px"
@@ -330,29 +326,29 @@
               </div>
             </div>
           </nav>
-          <!-- End Navbar -->
-          <div class="content">
-            <div style="display:flex; justify-content : space-between;">
-              <div
-                      class="btn-toolbar"
-                      role="toolbar"
-                      aria-label="Toolbar with button groups"
-                    >
-                <div class="btn-group mr-2" role="group" style="height: 65px">
-                  <button onclick="App.changeHide()" class="btn btn-secondary">
-                    Clear
-                  </button>
-                </div>
-                  <div class="btn-group mr-2" role="group" style="height: 65px">
-                    <button onclick="App.changePrev()" class="btn btn-secondary">
-                      <
-                    </button>
-                    <button onclick="App.changeNext()" class="btn btn-secondary">
-                      >
-                    </button>
-</div>
-                </div>
-
+          </div>
+        <!-- End Navbar -->
+        <div class="content">
+          <div style="display:flex; justify-content : space-between;">
+            <div
+              class="btn-toolbar"
+              role="toolbar"
+              aria-label="Toolbar with button groups"
+            >
+              <div class="btn-group mr-2" role="group" style="height: 65px">
+                <button onclick="App.changeHide()" class="btn btn-secondary">
+                  Clear
+                </button>
+              </div>
+              <div class="btn-group mr-2" role="group" style="height: 65px">
+                <button onclick="App.changePrev()" class="btn btn-secondary">
+                  <
+                </button>
+                <button onclick="App.changeNext()" class="btn btn-secondary">
+                  >
+                </button>
+              </div>
+            </div>
               <div class="btn-group" role="group" style="height: 65px">
                 <button onclick="App.changeMonth()" class="btn btn-secondary">
                   Monthly
