@@ -42,6 +42,5 @@
     "nodemon": "^1.19.1",
     "path": "^0.12.7",
     "webpack": "^4.35.0"
-  },
-  "proxy": "http://localhost:4000/"
+  }
 }
