@@ -198,7 +198,7 @@ myContract.options.gasPrice = '25000000000'; // default gas price in peb
 myContract.options.gas = 5000000; // provide as fallback always 5M gas
 
 // console.log(myContract.options);
-// console.log(myContract.methods.totalSupply().call());
+console.log(myContract.methods.balanceOf('0x72c5f48a39bb3915b8b8699b7182ba933a287288').call().value);
 
 // myContract.methods.transfer('0x036161669e02b74cd9b217fcc277062196dfba52', 10000000000000).call()
 //   .then(function(receipt) {
@@ -206,11 +206,7 @@ myContract.options.gas = 5000000; // provide as fallback always 5M gas
 //   });
 
   // // transfer => unknown account
-  myContract.methods.transfer('0x036161669e02b74cd9b217fcc277062196dfba52', caver.utils.toPeb('1', 'KLAY')).
-  send()
-  .then(function(receipt) {
-    console.log(receipt);
-  });
+
   
 
 const calendar = new Calendar("#calendar", {
@@ -245,7 +241,7 @@ const calendar = new Calendar("#calendar", {
   calendars: [
     {
       id: '1',
-      name: "Company",
+      name: "Private",
       color: "#ffffff",
       bgColor: "#9e5fff",
       dragBgColor: "#9e5fff",
@@ -262,18 +258,18 @@ const calendar = new Calendar("#calendar", {
     {
       id: "3",
       name: "Friends",
-      color: "#00a9ff",
-      bgColor: "#00a9ff",
-      dragBgColor: "#00a9ff",
-      borderColor: "#00a9ff"
+      color: "#12fa1f",
+      bgColor: "#12fa1f",
+      dragBgColor: "#12fa1f",
+      borderColor: "#12fa1f"
     },
     {
       id: "4",
-      name: "",
-      color: "#00a9ff",
-      bgColor: "#00a9ff",
-      dragBgColor: "#00a9ff",
-      borderColor: "#00a9ff"
+      name: "Family",
+      color: "#47C83E",
+      bgColor: "#47C83E",
+      dragBgColor: "#47C83E",
+      borderColor: "#47C83E"
     },
 
   ],
@@ -328,6 +324,8 @@ const App = {
   },
 
   changeToday: function() {
+    countMonth = 0;
+    this.nowgetdate(countMonth);
     calendar.today();
   },
 
@@ -341,6 +339,7 @@ const App = {
 
   changeCalendar: function() {
     calendar.toggleSchedules('Major Lecture', true, true);
+    // calendar.toggleSchedules('General Lecture', true, true);
   },
 
   nowgetdate: function(add = 0) {
@@ -364,83 +363,103 @@ const App = {
   rechangeCalendar: function(calendarId) {
     //calendarId add함수 실행.
   },
-  
+
+  nowLCK: function() {
+    
+  }
+
 };
 
 window.App = App;
-
 App.nowgetdate();
 
-calendar.createSchedules([
-  {
-    id: "1",
-    calendarId: 'Major Lecture',
-    title: "자료 구조",
-    location: "한빛관 304호",
-    category: "time",
-    start: "2019-06-23T10:30:00",
-    end: "2019-06-23T12:30:00"
-  },
-  {
-    id: "2",
-    calendarId: "General Lecture",
-    title: "건강과 영양",
-    location: '구리시',
-    category: "time",
-    start: "2019-06-24T14:30:00",
-    end: "2019-06-24T16:30:00",
-    isReadOnly: true // schedule is read-only
+$.ajax({
+  url: '/initial', // 클라이언트가 요청을 보낼 서버의 URL 주소
+  data: {id: 'hacker10'},
+  type: 'POST', // HTTP 요청 방식(GET, POST)
+  dataType: 'json', // 서버에서 보내줄 데이터의 타입
+  success(json) {
+    calendar.createSchedules(json);
   }
-]);
+  });
 
-calendar.setCalendarColor("Major Lecture", {
-  color: "#ffffff",
-  bgColor: "#ff5583",
-  dragBgColor: "#ff5583",
-  borderColor: "#ff5583"
-});
 
-calendar.setCalendarColor("General Lecture", {
-  color: "#ffffff",
-  bgColor: "#dc9656",
-  dragBgColor: "#dc9656",
-  borderColor: "#dc9656"
-});
 
 //일정 생성
-calendar.on("beforeCreateSchedule", scheduleData => {
+calendar.on('beforeCreateSchedule', scheduleData => {
   const schedule = {
-    calendarId: "Major Lecture",
+    calendarId: scheduleData.calendarId,
     id: String(Math.random() * 100000000000000000),
     title: scheduleData.title,
     isAllDay: scheduleData.isAllDay,
     start: scheduleData.start,
     end: scheduleData.end,
-    category: scheduleData.isAllDay ? "allday" : "time"
+    category: scheduleData.isAllDay ? 'allday' : 'time'
   };
 
-  calendar.createSchedules([schedule]);
-  console.log(scheduleData.title, scheduleData.location);
-  
-  alert("일정 생성 완료");
+  const tempDate = schedule.start;
+  const tempDate2 = schedule.end;
+
+  $.ajax({
+    url: '/insert',
+    data: {
+      calendarId: scheduleData.calendarId,
+      id: String(Math.random() * 100000000000000000),
+      title: scheduleData.title,
+      isAllDay: scheduleData.isAllDay,
+      start: `${tempDate.getFullYear()}-${tempDate.getMonth() + 1}-${tempDate.getDate()} ${tempDate.getHours()}:${tempDate.getMinutes()}:${tempDate.getSeconds()}`,
+      end: `${tempDate2.getFullYear()}-${tempDate2.getMonth() + 1}-${tempDate2.getDate()} ${tempDate2.getHours()}:${tempDate2.getMinutes()}:${tempDate2.getSeconds()}`,
+      category: scheduleData.isAllDay ? 'allday' : 'time'
+    },
+    type: 'POST',
+    dataType: 'json',
+    success() {
+      calendar.createSchedules([schedule]);
+      alert('일정 생성 완료');
+    }
+  });
 });
 
-//일정 업데이트
-calendar.on("beforeUpdateSchedule", scheduleData => {
-  const { schedule } = scheduleData;
+// 일정 업데이트
+calendar.on('beforeUpdateSchedule', scheduleData => {
+  const {schedule} = scheduleData;
 
-  calendar.updateSchedule(schedule.id, schedule.calendarId, schedule);
+  const tempDate = schedule.start;
+  const tempDate2 = schedule.end;
+
+  $.ajax({
+    url: '/update', // 클라이언트가 요청을 보낼 서버의 URL 주소
+    data: {
+      calendarId: schedule.calendarId,
+      id: schedule.id,
+      title: schedule.title,
+      start: `${tempDate.getFullYear()}-${tempDate.getMonth() + 1}-${tempDate.getDate()} ${tempDate.getHours()}:${tempDate.getMinutes()}:${tempDate.getSeconds()}`,
+      end: `${tempDate2.getFullYear()}-${tempDate2.getMonth() + 1}-${tempDate2.getDate()} ${tempDate2.getHours()}:${tempDate2.getMinutes()}:${tempDate2.getSeconds()}`
+    },
+    type: 'POST', // HTTP 요청 방식(GET, POST)
+    dataType: 'json', // 서버에서 보내줄 데이터의 타입
+    success() {
+      calendar.updateSchedule(schedule.id, schedule.calendarId, schedule);
+    }
+  });
 });
 
-//일정 삭제
-calendar.on("beforeDeleteSchedule", scheduleData => {
-  const { schedule, start, end } = scheduleData;
+// 일정 삭제
+calendar.on('beforeDeleteSchedule', scheduleData => {
+  const {schedule} = scheduleData;
 
-  schedule.start = start;
-  schedule.end = end;
-  calendar.deleteSchedule(schedule.id, schedule.calendarId);
+  $.ajax({
+    url: '/delete',
+    data: {
+      id: schedule.id
+    },
+    type: 'POST',
+    dataType: 'json',
+    success() {
+      calendar.deleteSchedule(schedule.id, schedule.calendarId);
+    }
+  });
 });
-
 // $('#plusModal').on('hidden.bs.modal', function (e) {
 //   console.log('modal close');
 //   $('#groupname')[0].reset()
