@@ -289,48 +289,60 @@ const App = {
     let groupname = $('#groupname').val();
     console.log(groupname);
     const plusUl = document.createElement("li");
-    plusUl.innerHTML = '<a style="display: flex; justify-content: space-between;"><p style="font-size: 18px;">'+groupname+'</p><img src = "../assets/img/자산 7.png"/></a>';
+    plusUl.innerHTML = '<a style="display: flex; justify-content: space-between;"><p style="font-size: 18px;">'+groupname+'</p><img src = "../assets/img/그룹 -3@2x.png"/></a>';
     document.getElementById("a").appendChild(plusUl);
   },
+
   changeMonth: function() {
     calendar.changeView('month', true);
   },
+
   changeWeek: function() {
     calendar.changeView('week', true);
   },
+
   changeDay: function() {
     calendar.changeView('day', true);
   },
+
   changeCalendar: function() {
     calendar.id[0].render();
   },
+
   clear: function() {
     calendar.clear();
     calendar.createSchedules(schedules, true);
     calendar.render();
   },
+
   changePrev: function() {
     countMonth -= 1;
     calendar.prev();
     this.nowgetdate(countMonth);
   },
+
   changeNext: function() {
     countMonth += 1;
     calendar.next();
     this.nowgetdate(countMonth);
   },
+
   changeToday: function() {
     calendar.today();
   },
+
   destroy: function() {
     calendar.destroy();
   },
+
   rerender: function() {
     calendar._initialize();
   },
+
   changeCalendar: function() {
     calendar.toggleSchedules('Major Lecture', true, true);
   },
+
   nowgetdate: function(add = 0) {
     // let timenow = (calendar.getDate()._date + ' ').split(' ').slice(1, 4).join(' ');
     let mm = String(today.getMonth()+1+add) + '월'; //January is 0!
@@ -347,13 +359,12 @@ const App = {
 
     setdateElement.appendChild(plusUl);
     console.log(nowdate);
+  },
 
-  }
-  // inputtoval: function() {
-  //   let input = document.getElementById("groupname").value; 
-  //   let temp = input;
-  //   // console.log(temp);
-  // }
+  rechangeCalendar: function(calendarId) {
+    //calendarId add함수 실행.
+  },
+  
 };
 
 window.App = App;

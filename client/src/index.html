@@ -104,42 +104,46 @@
       }
 
       psidebar {
-        font-size:15px;
+        font-size: 15px;
       }
       /* Input css */
     </style>
   </head>
 
   <body class="">
-
     <div class="wrapper ">
       <div class="sidebar" data-color="white" data-active-color="danger">
-        <div class="logo" style = "text-align: center;">
-          <h2>링크캘린더</h2>
-        </div>
-        <div class="logo" style="display: flex">
-          <a>
-            <div>
-              <img src="../assets/img/logo-small.png" style="width: 60px; height: 60px"/>
-            </div>
-          </a>
-          <a href="#" class="simple-text logo-normal">
-              &nbsp;&nbsp;&nbsp;&nbsp;hacker10
-          </a>
-        </div>
         <div class="sidebar-wrapper">
+          <div style="text-align: center; margin:15px; display: inline-flex;">
+            <img src="../assets/img/logo-5@2x.png" />
+          </div>
+          <hr>
+          <div style="text-align: center; margin-left:35px; display: inline-flex;">
+            <img
+              src="../assets/img/프로필-1@2x.png"
+              style="width: 60px; height: 60px"
+            />
+            <a style="margin-top:15px; font-size: 25px;"
+              >&nbsp;&nbsp;&nbsp;hacker10</a
+            >
+          </div>
+          <div>
+              <img src="../assets/img/중앙선.png" style="margin-left:20px; width:80%">
+            </div>
+              <div style="text-align: center">
+
+                <img src="../assets/img/심볼.png" />
+                <a style=" font-size: 25px;">&nbsp;11.7 LCK</a>
+                </div>
+
           <ul id="a" class="nav">
             <li>
-              <a href="./dashboard.html" style="display: flex; justify-content: space-between;" >
-                <p style="font-size: 18px;">모든공유일정</p>
-                <img src = "../assets/img/자산 7.png"/>
+              <a href="#" style="display: flex; justify-content: space-between;">
+
+                
+                <b style="font-size: 18px;">모든공유일정</b>
+                <img src="../assets/img/그룹 -3@2x.png" />
               </a>
-            </li>
-            <li>
-                <a href="#" style="display: flex; justify-content: space-between;">
-                  <p>Dashboard</p>
-                  <img src = "../assets/img/자산 7.png"/>
-                </a>
             </li>
           </ul>
           <div style="text-align: center">
@@ -232,20 +236,48 @@
       <!-- /.modal -->
 
       <div class="main-panel">
-        
-        <div class="content">
-            <div id = "setdate" style="text-align: center; margin-bottom: -20px;">
-              </div>
+        <div class="content" >
+          <div id="setdate"style="text-align: center; margin-bottom: -50px;"></div>
+
           <div style="display:flex; justify-content : space-between;">
             <div
               class="btn-toolbar"
               role="toolbar"
               aria-label="Toolbar with button groups"
             >
-
-                <button onclick="App.clear()" class="btn btn-secondary">
-                  Today
-                </button>
+              <button
+                onclick="App.changeToday()"
+                class="btn btn-secondary"
+                style="border-radius:30px"
+              >
+                Today
+              </button>
+              <button
+              onclick="App.changePrev()"
+              class="btn"
+              style="
+                width: 40px;
+                height: 40px;
+                padding: 10px 12px;
+                font-size: 16px;
+                line-height: 1.33;
+                border-radius: 25px;"
+            >
+              <
+            </button>
+            <button
+            onclick="App.changeNext()"
+            class="btn"
+            style="
+              width: 40px;
+              height: 40px;
+              padding: 10px 12px;
+              font-size: 16px;
+              line-height: 1.33;
+              border-radius: 25px;"
+          >
+              >
+          </button>
 
               <!-- <div class="btn-group mr-2" role="group" style="height: 65px">
                 <button onclick="App.changePrev()" class="btn btn-secondary">
@@ -258,14 +290,44 @@
             </div>
 
             <div>
-              <button onclick="App.changeMonth()" class="btn btn-secondary">
-                Monthly
+              <button
+                onclick="App.changeMonth()"
+                class="btn"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  padding: 10px 12px;
+                  font-size: 16px;
+                  line-height: 1.33;
+                  border-radius: 25px;"
+              >
+                월
               </button>
-              <button onclick="App.changeWeek()" class="btn btn-secondary">
-                Weekly
+              <button
+                onclick="App.changeWeek()"
+                class="btn"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  padding: 10px 12px;
+                  font-size: 16px;
+                  line-height: 1.33;
+                  border-radius: 25px;"
+              >
+                주
               </button>
-              <button onclick="App.changeDay()" class="btn btn-secondary" style="font-si">
-                Daily
+              <button
+                onclick="App.changeDay()"
+                class="btn"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  padding: 10px 12px;
+                  font-size: 16px;
+                  line-height: 1.33;
+                  border-radius: 25px;"
+              >
+                일
               </button>
             </div>
           </div>
