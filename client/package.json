@@ -47,6 +47,7 @@
     "react-amplitude": "^0.1.7",
     "style-loader": "^0.23.1",
     "tui-calendar": "^1.12.1",
-    "webpack": "^4.35.0"
+    "webpack": "^4.35.0",
+    "caver-js": "^1.0.0"
   }
 }

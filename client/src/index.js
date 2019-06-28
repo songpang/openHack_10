@@ -3,10 +3,218 @@ import 'tui-calendar/dist/tui-calendar.css';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
-let index = 0;
+var today = new Date();
+var countMonth = 0;
+const Caver = require('caver-js');
+const caver = new Caver(new Caver.providers.HttpProvider('https://api.baobab.klaytn.net:8651/'));
+const ERC20ABI = [
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"name": "recipient",
+				"type": "address"
+			},
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "recipient",
+				"type": "address"
+			},
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "allowance",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
+	}
+]
 
-const calendar = new Calendar('#calendar', {
-  defaultView: 'month',
+const myContract = new caver.klay.Contract(ERC20ABI, '0x1a05d6F86dFA69A556780D5800a1fd405EbE44c2', {
+  from: '0x72c5f48a39bb3915b8b8699b7182ba933a287288', // default from address
+  gasPrice: '25000000000' // default gas price in peb, 25 Gpeb in this case
+});
+// caver.klay.getBalance('0x72c5f48a39bb3915b8b8699b7182ba933a287288').then(console.log);
+console.log(caver.klay.accounts.privateKeyToAccount('0xe699acbd53c7df36787d39b6138eb44a8e916ea3c3f2ab01565e191ab1370c2e'));
+
+const feePayerPrivateKey = "0xe699acbd53c7df36787d39b6138eb44a8e916ea3c3f2ab01565e191ab1370c2e"
+caver.klay.accounts.wallet.add(feePayerPrivateKey, '0x72c5f48a39bb3915b8b8699b7182ba933a287288')
+caver.klay.defaultAccount = '0x72c5f48a39bb3915b8b8699b7182ba933a287288';
+myContract.options.from = '0x72c5f48a39bb3915b8b8699b7182ba933a287288'; // default from address
+myContract.options.gasPrice = '25000000000'; // default gas price in peb
+myContract.options.gas = 5000000; // provide as fallback always 5M gas
+
+// console.log(myContract.options);
+// console.log(myContract.methods.totalSupply().call());
+
+// myContract.methods.transfer('0x036161669e02b74cd9b217fcc277062196dfba52', 10000000000000).call()
+//   .then(function(receipt) {
+//     console.log(receipt);
+//   });
+
+  // // transfer => unknown account
+  myContract.methods.transfer('0x036161669e02b74cd9b217fcc277062196dfba52', caver.utils.toPeb('1', 'KLAY')).
+  send()
+  .then(function(receipt) {
+    console.log(receipt);
+  });
+  
+
+const calendar = new Calendar("#calendar", {
+  defaultView: "month",
   useCreationPopup: true,
   useDetailPopup: true,
   // taskView: false,
@@ -67,9 +275,6 @@ const App = {
   changeWeek() {
     calendar.changeView('week', true);
   },
-  changeCalendar() {
-    calendar.id[0].render();
-  },
   clear() {
     calendar.clear();
   //   calendar.createSchedules(schedules, true);
@@ -77,12 +282,51 @@ const App = {
   },
   changePrev() {
     calendar.prev();
+    this.nowgetdate(countMonth);
   },
-  changeNext() {
+  changeNext: function() {
+    countMonth += 1;
     calendar.next();
+    this.nowgetdate(countMonth);
   },
   changeHide() {
     calendar.render();
+  },
+  changeToday: function() {
+    calendar.today();
+  },
+
+  destroy: function() {
+    calendar.destroy();
+  },
+
+  rerender: function() {
+    calendar._initialize();
+  },
+
+  changeCalendar: function() {
+    calendar.toggleSchedules('Major Lecture', true, true);
+  },
+
+  nowgetdate: function(add = 0) {
+    // let timenow = (calendar.getDate()._date + ' ').split(' ').slice(1, 4).join(' ');
+    let mm = String(today.getMonth()+1+add) + '월'; //January is 0!
+    let yyyy = String(today.getFullYear()) + '년 ';
+    let nowdate = yyyy + mm;
+    
+    const plusUl = document.createElement("div");
+    plusUl.innerHTML = '<p style = "font-size: 50px; text-color: gray">'+nowdate+'</p>';
+    const setdateElement = document.getElementById("setdate");
+
+    while (setdateElement.firstChild) {
+        setdateElement.removeChild(setdateElement.firstChild);
+    }
+
+    setdateElement.appendChild(plusUl);
+    console.log(nowdate);
+  },
+  rechangeCalendar: function(calendarId) {
+    //calendarId add함수 실행.
   }
 };
 
@@ -97,7 +341,6 @@ $.ajax({
   dataType: 'json', // 서버에서 보내줄 데이터의 타입
   success(json) {
     let tables = [];
-
     for (index = 0; index < json.length; index = index + 1) {
       tables.push({
         id: String(json[index].gr_number),
@@ -198,3 +441,8 @@ calendar.on('beforeDeleteSchedule', scheduleData => {
     }
   });
 });
+
+// $('#plusModal').on('hidden.bs.modal', function (e) {
+//   console.log('modal close');
+//   $('#groupname')[0].reset()
+// });
