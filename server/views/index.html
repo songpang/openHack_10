@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/img/apple-icon.png"
+    />
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <!--     Fonts and icons     -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Files -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css'>
+
+<style>
+div { font-family: 'KoPub Dotum'; font-size: 4; }
+div:nth-of-type(1) { font-weight: 300; }
+div:nth-of-type(2) { font-weight: 700; }
+</style>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        display: grid;
+        font-family: Avenir;
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .inp {
+        position: relative;
+        margin: auto;
+        width: 100%;
+        max-width: 280px;
+      }
+      .inp .label {
+        position: absolute;
+        top: 16px;
+        left: 0;
+        font-size: 16px;
+        color: #9098a9;
+        font-weight: 500;
+        transform-origin: 0 0;
+        transition: all 0.2s ease;
+      }
+      .inp .border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: #07f;
+        transform: scaleX(0);
+        transform-origin: 0 0;
+        transition: all 0.15s ease;
+      }
+      .inp input {
+        -webkit-appearance: none;
+        width: 100%;
+        border: 0;
+        font-family: inherit;
+        padding: 12px 0;
+        height: 48px;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 2px solid #c8ccd4;
+        background: none;
+        border-radius: 0;
+        color: #223254;
+        transition: all 0.15s ease;
+      }
+      .inp input:hover {
+        background: rgba(34, 50, 84, 0.03);
+      }
+      .inp input:not(:placeholder-shown) + span {
+        color: #5a667f;
+        transform: translateY(-26px) scale(0.75);
+      }
+      .inp input:focus {
+        background: none;
+        outline: none;
+      }
+      .inp input:focus + span {
+        color: #07f;
+        transform: translateY(-26px) scale(0.75);
+      }
+      .inp input:focus + span + .border {
+        transform: scaleX(1);
+      }
+
+      psidebar {
+        font-size: 15px;
+      }
+      /* Input css */
+    </style>
+  <link href="main.css" rel="stylesheet"></head>
+
+  <body class="">
+    <div class="wrapper ">
+      <div class="sidebar" data-color="white" data-active-color="danger">
+        <div class="sidebar-wrapper">
+          <div style="text-align: center; margin:15px; display: inline-flex;">
+            <img src="/img/logo-5@2x.png"/>
+          </div>
+          <hr>
+          <div style="text-align: center; margin-left:35px; display: inline-flex;">
+            <img
+              src="/img/프로필-1@2x.png"
+              style="width: 60px; height: 60px"
+            />
+            <a style="margin-top:15px; font-size: 25px;"
+              >&nbsp;&nbsp;&nbsp;hacker10</a
+            >
+          </div>
+          <div>
+              <img src="/img/중앙선.png" style="margin-left:20px; width:80%">
+            </div>
+              <div style="text-align: center">
+
+                <img src="/img/심볼.png" />
+                <div id = "nowLCKL"></div>
+                </div>
+
+          <ul id="a" class="nav">
+            <li>
+              <a href="#" data-toggle="modal"
+              data-target="#shareModal" style="display: flex; justify-content: space-between;">
+
+                
+                <b style="font-size: 18px;">모든공유일정</b>
+                <img src="/img/그룹 -3@2x.png" />
+              </a>
+            </li>
+            <li>
+              <a href="#" data-toggle="modal"
+              data-target="#shareModal" style="display: flex; justify-content: space-between;">
+
+                
+                <b style="font-size: 18px;">회사일정</b>
+                <img src="/img/그룹 -3@2x.png" />
+              </a>
+            </li>
+            <li>
+              <a href="#" data-toggle="modal"
+              data-target="#shareModal" style="display: flex; justify-content: space-between;">
+
+                
+                <b style="font-size: 18px;">가족일정</b>
+                <img src="/img/그룹 -3@2x.png" />
+              </a>
+            </li>
+            <li>
+              <a href="#" data-toggle="modal"
+              data-target="#shareModal" style="display: flex; justify-content: space-between;">
+
+                
+                <b style="font-size: 18px;">친구일정</b>
+                <img src="/img/그룹 -3@2x.png" />
+              </a>
+            </li>
+          </ul>
+          <div style="text-align: center">
+            <button
+              class="btn"
+              data-toggle="modal"
+              data-target="#plusModal"
+              style="
+              width: 50px;
+              height: 50px;
+              padding: 10px 16px;
+              font-size: 18px;
+              line-height: 1.33;
+              border-radius: 25px;
+            "
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- adding group modal start -->
+      <div class="modal fade" tabindex="-1" role="dialog" id="plusModal">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-body" style="text-align: center">
+              <i class="nc-icon nc-badge" style="font-size: 50px"></i>
+              <p>Please input your group name !</p>
+              <div class="form-group">
+                <label for="inp" class="inp">
+                  <input type="text" id="groupname" placeholder="&nbsp;" />
+                  <span class="label">Group Name</span>
+                  <span class="border"></span>
+                </label>
+
+                <p>&nbsp;</p>
+
+                <label for="inp" class="inp">
+                  <input type="text" id="group_desc" placeholder="&nbsp;" />
+                  <span class="label">Description</span>
+                  <span class="border"></span>
+                </label>
+              </div>
+            </div>
+            <button
+              style="padding-right: 30px"
+              onclick="App.plusFun()"
+              class="btn"
+              data-dismiss="modal"
+            >
+              Plus Group
+            </button>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+      <!-- adding sharing modal start -->
+      <div class="modal fade" tabindex="-1" role="dialog" id="shareModal">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-body" style="text-align: center">
+              <i class="nc-icon nc-badge" style="font-size: 50px"></i>
+              <p>Please input your friends E-mail for sharing !</p>
+              <div class="form-group">
+                <label for="inp" class="inp">
+                  <input type="text" id="inp" placeholder="&nbsp;" />
+                  <span class="label">E-mail</span>
+                  <span class="border"></span>
+                </label>
+
+                <p>&nbsp;</p>
+
+                <label for="inp" class="inp">
+                  Send link : https://kleander.co.kr/index
+                </label>
+              </div>
+            </div>
+            <button class="btn" data-dismiss="modal">
+              Sharing!
+            </button>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+      <div class="main-panel">
+        <div class="content" >
+          <div id="setdate"style="text-align: center; margin-bottom: -50px;"></div>
+
+          <div style="display:flex; justify-content : space-between;">
+            <div
+              class="btn-toolbar"
+              role="toolbar"
+              aria-label="Toolbar with button groups"
+            >
+              <button
+                onclick="App.changeToday()"
+                class="btn btn-secondary"
+                style="border-radius:30px"
+              >
+                Today
+              </button>
+              <button
+              onclick="App.changePrev()"
+              class="btn"
+              style="
+                width: 40px;
+                height: 40px;
+                padding: 10px 12px;
+                font-size: 16px;
+                line-height: 1.33;
+                border-radius: 25px;"
+            >
+              <
+            </button>
+            <button
+            onclick="App.changeNext()"
+            class="btn"
+            style="
+              width: 40px;
+              height: 40px;
+              padding: 10px 12px;
+              font-size: 16px;
+              line-height: 1.33;
+              border-radius: 25px;"
+          >
+              >
+          </button>
+
+              <!-- <div class="btn-group mr-2" role="group" style="height: 65px">
+                <button onclick="App.changePrev()" class="btn btn-secondary">
+                  <
+                </button>
+                <button onclick="App.changeNext()" class="btn btn-secondary">
+                  >
+                </button>
+              </div> -->
+            </div>
+
+            <div>
+              <button
+                onclick="App.changeMonth()"
+                class="btn"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  padding: 10px 12px;
+                  font-size: 16px;
+                  line-height: 1.33;
+                  border-radius: 25px;"
+              >
+                월
+              </button>
+              <button
+                onclick="App.changeWeek()"
+                class="btn"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  padding: 10px 12px;
+                  font-size: 16px;
+                  line-height: 1.33;
+                  border-radius: 25px;"
+              >
+                주
+              </button>
+              <button
+                onclick="App.changeDay()"
+                class="btn"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  padding: 10px 12px;
+                  font-size: 16px;
+                  line-height: 1.33;
+                  border-radius: 25px;"
+              >
+                일
+              </button>
+            </div>
+          </div>
+          <div id="calendar" style="height: 700px;"></div>
+        </div>
+      </div>
+    </div>
+    <!--   Core JS Files   -->
+    <script src="/js/core/jquery.min.js"></script>
+    <script src="/js/core/popper.min.js"></script>
+    <script src="/js/core/bootstrap.min.js"></script>
+    <script src="/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
+    <!-- Chart JS -->
+    <script src="/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script
+      src="/js/paper-dashboard.min.js?v=2.0.0"
+      type="text/javascript"
+    ></script>
+
+    <script type="text/javascript"></script>
+  <script type="text/javascript" src="bundle.js"></script></body>
+</html>
