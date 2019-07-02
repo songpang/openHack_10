@@ -1,2 +1,11 @@
-# openHack_10
-OPENHACK TEAM : 10 with calendar service
+# 오픈핵 2019 (OPENHACK 2019) : 5 TEAM (일정공유하조)
+
+### 개발 산출물 : 캘린더를 통한 리워딩 일정공유 서비스
+- 같은 그룹, 혹은 단체에 속한 구성원들이 서로 일정을 공유하고 서비스 제공자가 발행한 token을 리워딩 받는 시스템
+
+### 참여 인력 : 
+- 개발자 : 송현수, 배희수, 이은진, 정재헌 
+- 디자이너 : 조하연
+
+### 개발스택 : html, node.js, ES6, klaytn, solidity
+
